@@ -12,13 +12,24 @@ class Manager
 
     def scp_download(source_path:, local_path:)
       command = "scp #{host}:#{source_path} #{local_path}"
-      exe_hs command
+      exe_s command
     end
 
     def scp_upload(source_path:, remote_path:)
-      exe_h "scp -T #{source_path} #{host}:#{remote_path}"
+      exe_s "scp #{source_path} #{host}:#{remote_path}"
     end
 
+    # execute locally using system
+    def exe_s(cmd)
+      puts "executing: #{cmd}"
+      puts "---"
+      outcome_ok = system cmd
+      puts "---"
+      puts outcome_ok ? "command succeeded" : "Command Errored"
+      puts "---"
+    end
+
+    # execute locally
     def exe_h(cmd, stop: true, quiet: false)
       puts "executing: #{cmd}"
       puts "---"
