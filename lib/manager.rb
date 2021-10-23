@@ -1,24 +1,33 @@
 class Manager
   module Utils
 
+    def host
+      "#{CONFIG.f :vm_username}@#{CONFIG.f :vm_ip}"
+    end
+
     # execute via ssh
     def exe(cmd, stop: true, quiet: false)
-      puts "executing: #{cmd}"
-      puts "---"
       exe_h "ssh -t #{host} '#{cmd}'", stop: stop, quiet: quiet
-      puts "---"
     end
 
     def scp_download(source_path:, local_path:)
-      exe_h "scp #{host}:#{source_path} #{local_path}"
+      command = "scp #{host}:#{source_path} #{local_path}"
+      exe_hs command
     end
 
     def scp_upload(source_path:, remote_path:)
-      exe_h "scp #{source_path} #{host}:#{remote_path}"
+      exe_h "scp -T #{source_path} #{host}:#{remote_path}"
+    end
+
+    def exe_h(cmd, stop: true, quiet: false)
+      puts "executing: #{cmd}"
+      puts "---"
+      exe_host cmd, stop: true, quiet: false
+      puts "---"
     end
 
     # execute on host
-    def exe_h(cmd, stop: true, quiet: false)
+    def exe_host(cmd, stop: true, quiet: false)
       output = ""
       Open3.popen3(cmd) do |stdin, stdout, stderr, process|
         t1 = Thread.new do
@@ -45,10 +54,6 @@ class Manager
       end
       output
     end
-  end
-
-  def host
-    "#{CONFIG.f :vm_username}@#{CONFIG.f :vm_ip}"
   end
 
   # ...

@@ -4,7 +4,7 @@ class ManagerLocal
 
     end
 
-    def download_images_cmd
+    def download_state_images_cmd
       -> {
         scp_download source_path: "~/data2/output/*/*.png", local_path: "#{DIR}/output"
       }
