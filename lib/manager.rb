@@ -3,11 +3,18 @@ class Manager
 
     # execute via ssh
     def exe(cmd, stop: true, quiet: false)
-      host = "#{CONFIG.f :vm_username}@#{CONFIG.f :vm_ip}"
       puts "executing: #{cmd}"
       puts "---"
       exe_h "ssh -t #{host} '#{cmd}'", stop: stop, quiet: quiet
       puts "---"
+    end
+
+    def scp_download(source_path:, local_path:)
+      exe_h "scp #{host}:#{source_path} #{local_path}"
+    end
+
+    def scp_upload(source_path:, remote_path:)
+      exe_h "scp #{source_path} #{host}:#{remote_path}"
     end
 
     # execute on host
@@ -38,6 +45,10 @@ class Manager
       end
       output
     end
+  end
+
+  def host
+    "#{CONFIG.f :vm_username}@#{CONFIG.f :vm_ip}"
   end
 
   # ...

@@ -1,5 +1,6 @@
 class StyleGAN3Manager
   include Manager::Utils
+  include ManagerLocal::Commands
 
   def self.train
     # ...
@@ -7,7 +8,8 @@ class StyleGAN3Manager
 
   def self.utils
     {
-      stats: stats,
+      stats:                 stats,
+      download_state_images: download_state_images,
     }
   end
 
@@ -15,17 +17,16 @@ class StyleGAN3Manager
     new.stats
   end
 
+  def self.download_state_images
+    new.download_state_images
+  end
+
   def stats
     stats_cmd
   end
 
-  private
-
-  def stats_cmd
-    -> {
-      puts "stats"
-      exe "nvidia-smi", stop: false
-    }
+  def download_state_images
+    download_state_images_cmd
   end
 
 end

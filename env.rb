@@ -5,8 +5,13 @@ require "open3"
 
 PATH = File.expand_path "../", __FILE__
 
+DIR = Dir.pwd
+
+HOME_DIR = ENV["HOME"]
+raise "Error - ENV HOME not exported - HOME=#{HOME_DIR.inspect}" if !HOME_DIR || HOME_DIR.empty?
+
 require_relative "config/config"
 require_relative "lib/monkeypatches"
 require_relative "lib/manager"
-
+require_relative "lib/manager_local"
 require_relative "stylegan3_manager"
