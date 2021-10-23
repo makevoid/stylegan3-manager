@@ -1,2 +1,4 @@
 output/*.png
 output/*.pkl
+output-*
+.rake_tasks~

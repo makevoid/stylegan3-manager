@@ -20,6 +20,15 @@ task :download_state_images do
   StyleGAN3Manager.utils.f(:download_state_images).()
 end
 
+task download_fakes: :download_state_images
+
+desc "Stats - Display VM GPU Memory usage and VM RAM Memory usage"
+task :logs do
+  StyleGAN3Manager.utils.f(:logs).()
+end
+
+task log: :logs
+
 desc "Stats"
 task :stats do
   StyleGAN3Manager.utils.f(:stats).()

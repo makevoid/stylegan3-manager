@@ -6,8 +6,10 @@ class Manager
     end
 
     # execute via ssh
-    def exe(cmd, stop: true, quiet: false)
-      exe_h "ssh -t #{host} '#{cmd}'", stop: stop, quiet: quiet
+    def exe(cmd, stop: true, quiet: false, pseudo_terminal: true)
+      pseudo_terminal_flag = ""
+      pseudo_terminal_flag = "-t" if pseudo_terminal
+      exe_h "ssh #{pseudo_terminal_flag} #{host} '#{cmd}'", stop: stop, quiet: quiet
     end
 
     def scp_download(source_path:, local_path:)
@@ -33,8 +35,9 @@ class Manager
     def exe_h(cmd, stop: true, quiet: false)
       puts "executing: #{cmd}"
       puts "---"
-      exe_host cmd, stop: true, quiet: false
+      output = exe_host cmd, stop: true, quiet: false
       puts "---"
+      output
     end
 
     # execute on host
