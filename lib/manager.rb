@@ -5,7 +5,9 @@ class Manager
     def exe(cmd, stop: true, quiet: false)
       host = "#{CONFIG.f :vm_username}@#{CONFIG.f :vm_ip}"
       puts "executing: #{cmd}"
-      exe_h "ssh #{host} '#{cmd}'"
+      puts "---"
+      exe_h "ssh -t #{host} '#{cmd}'", stop: stop, quiet: quiet
+      puts "---"
     end
 
     # execute on host
@@ -29,6 +31,7 @@ class Manager
         # process.join
         exit_status = process.value
         unless exit_status.success?
+          puts "---"
           puts "ERROR: command failed - command: #{cmd.inspect}"
           raise "ErrorCommandFailure" if stop
         end

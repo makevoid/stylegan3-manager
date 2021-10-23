@@ -24,7 +24,7 @@ class StyleGAN3Manager
   def stats_cmd
     -> {
       puts "stats"
-      exe "watch nvidia-smi", stop: false
+      exe "nvidia-smi", stop: false
     }
   end
 

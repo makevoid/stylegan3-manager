@@ -20,4 +20,10 @@ task :stats do
   StyleGAN3Manager.utils.f(:stats).()
 end
 
+desc "Stats (Live) - call rake stats with watch"
+task :live_stats do
+  sh "watch rake stats"
+end
+
+
 task default: :train
