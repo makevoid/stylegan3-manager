@@ -2,17 +2,17 @@ require_relative "env"
 
 desc "Setup - Install prerequisites"
 task :setup do
-
+  StyleGAN3Manager.setup
 end
 
 desc "Prepare - Prepare Dataset - prepare your images to be trained on by StyleGAN3"
 task :prepare do
-
+  StyleGAN3Manager.prepare_dataset
 end
 
 desc "Train - train model with your image dataset"
 task :train do
-
+  StyleGAN3Manager.train
 end
 
 desc "Download State Images (download fakes) - Download State Images (generated fakes) - every image correspond to a model snapshot you can download and use to generate the full set"
