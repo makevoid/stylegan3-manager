@@ -8,7 +8,16 @@ class StyleGAN3Manager
   end
 
   def self.train
+    new.train
+  end
+  
+  def self.setup
+    new.setup
     # ...
+    # check: dependencies installed - local setup
+    # which nvidia-smi
+    # run nvidia-smi
+    # which nvidia-docker
   end
 
   def self.utils
@@ -35,5 +44,8 @@ class StyleGAN3Manager
     imagemagick_convert
     # ...
   end
-
+  
+  def train
+    start_training
+  end
 end
