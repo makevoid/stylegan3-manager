@@ -23,6 +23,7 @@ class StyleGAN3Manager
   def self.utils
     {
       download_state_images: new.download_state_images,
+      download_all_models:   new.download_all_models,
       logs:                  new.logs,
       stats:                 new.stats,
     }
@@ -30,6 +31,10 @@ class StyleGAN3Manager
 
   def download_state_images
     download_state_images_cmd
+  end
+
+  def download_all_models
+    download_all_models_cmd
   end
 
   def logs

@@ -2,7 +2,7 @@ class Manager
   module Utils
 
     def host
-      "#{CONFIG.f :vm_username}@#{CONFIG.f :vm_ip}"
+      "#{VM_USERNAME}@#{VM_IP}"
     end
 
     # execute via ssh

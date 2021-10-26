@@ -10,6 +10,8 @@ DIR = Dir.pwd
 HOME_DIR = ENV["HOME"]
 raise "Error - ENV HOME not exported - HOME=#{HOME_DIR.inspect}" if !HOME_DIR || HOME_DIR.empty?
 
+RUN_ID = "" # TODO: detect run id
+
 require_relative "config/config"
 require_relative "lib/monkeypatches"
 require_relative "lib/manager"
