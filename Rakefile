@@ -59,7 +59,7 @@ task :info do
   puts "nvidia docker:"
   sh "nvidia-docker -v"
   puts "ssh test:"
-  host = "#{}"
+  host = "#{}" # TODO finish
   sh "ssh #{host} 'ls'"
 end
 
