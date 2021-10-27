@@ -11,6 +11,10 @@ class StyleGAN3Manager
     new.train
   end
   
+  def self.generate
+    new.generate
+  end
+  
   def self.setup
     new.setup
     # ...
@@ -47,10 +51,19 @@ class StyleGAN3Manager
 
   def prepare
     imagemagick_convert
+    prepare_pytorch_images_dataset
     # ...
   end
   
   def train
-    start_training
+    resume_training_model = "..." # TODO
+    Training.start resume_training_model_pkl: resume_training_model_pkl
+  end
+  
+  def generate
+    network = "name" # TODO
+    seed_start = 1000
+    seeds_num  = 2000
+    Generation.start network: network, seed_start: seed_start, seeds_num: seeds_num
   end
 end

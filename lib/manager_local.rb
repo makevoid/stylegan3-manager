@@ -29,5 +29,13 @@ class ManagerLocal
         sh "scp -r #{host}:#{model_file} ../data/output/"
       }
     end
+    
+    def prepare_pytorch_images_dataset
+       
+    end
+    
+    def python_local
+      nvidia_docker_local
+    end
   end
 end
