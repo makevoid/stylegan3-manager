@@ -1,6 +1,8 @@
 
 # Virtual Machine (from fluidstack.io or lambda.com or any vm)
-:vm_ip: 207.53.234.114
+# :vm_ip: 207.53.234.114
+:vm_ip: 192.168.1.185
 
 # VM username (user for fluidstack, ubuntu for lambda.com or AWS)
-:vm_username: user
+# :vm_username: user
+:vm_username: makevoid
