@@ -1,8 +1,9 @@
 
-# Virtual Machine (from fluidstack.io or lambda.com or any vm)
+# Virtual Machine (from fluidstack.io or lambda.com or any vm or on LAN)
+:vm_ip: mkvgpu.local
 # :vm_ip: 207.53.234.114
-:vm_ip: 192.168.1.185
 
-# VM username (user for fluidstack, ubuntu for lambda.com or AWS)
-# :vm_username: user
-:vm_username: makevoid
+# VM username
+:vm_username: makevoid  # custom user
+# :vm_username: user    # (for fluidstack)
+# :vm_username: ubuntu  # (user for lambda.com or AWS)
